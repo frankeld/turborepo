@@ -393,7 +393,7 @@ impl PnpmLockfile {
 
         // Prefer the original specifier if it already matches a snapshot,
         // so overrides don't corrupt resolved peer-dep variants.
-        if override_specifier != specifier && self.has_package(&self.format_key(name, specifier)) {
+        if override_specifier != specifier && self.has_package_by_parts(name, specifier, key_buf) {
             return Ok(Some(specifier));
         }
 
